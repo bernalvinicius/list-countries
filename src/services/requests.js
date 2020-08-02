@@ -15,27 +15,6 @@ export const GET_COUNTRIES = gql`
   }
 `;
 
-// export const GET_COUNTRIES_BY_ID = gql`
-//   {
-//     query Country($_id: _id) {
-//       Country(_id: $_id) {
-// name
-// capital
-// flag {
-//   emoji
-//   emojiUnicode
-//   svgFile
-// }
-// area
-// population
-// topLevelDomains {
-//   name
-// }
-//       }
-//     }
-//   }
-// `;
-
 export const GET_COUNTRIES_BY_ID = gql`
   query Country($_id: String!) {
     Country(_id: $_id) {
@@ -55,12 +34,3 @@ export const GET_COUNTRIES_BY_ID = gql`
     }
   }
 `;
-
-// import gql from 'graphql-tag';
-
-// export const USER_QUERY = gql `query User($id: ID!) {
-//     getUser(id: $id) {
-//         name
-//         surname
-//     }
-// }`;
