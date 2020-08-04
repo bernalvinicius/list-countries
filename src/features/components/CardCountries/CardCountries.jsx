@@ -2,7 +2,7 @@ import { Box, Toolbar, Grid } from '@material-ui/core';
 import React, { useState } from 'react';
 
 import client from '../../../services';
-import { GET_COUNTRIES } from '../../../services/requests';
+import { GET_COUNTRIES } from '../../../services/queries';
 import Country from '../Country';
 import Search from '../Search';
 import { useStyles } from './styles';
