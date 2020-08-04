@@ -37,8 +37,8 @@ const CardCountries = () => {
                   .indexOf(searchCountry.toLowerCase()) >= 0
               );
             })
-            .map((item, index) => (
-              <Country key={index} item={item} />
+            .map((item) => (
+              <Country key={item} item={item} />
             ))}
         </Grid>
       </Box>
