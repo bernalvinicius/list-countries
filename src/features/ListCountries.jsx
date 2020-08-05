@@ -1,6 +1,5 @@
 import React from 'react';
 
-import './styles.scss';
 import { Switch, Route } from 'react-router-dom';
 
 import CountryInfos from './pages/CountryInfos';
