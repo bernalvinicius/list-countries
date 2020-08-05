@@ -4,9 +4,29 @@ export const useStyles = makeStyles({
   root: {
     padding: '30px',
   },
+  cardHeader: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    borderBottom: '1px solid #CCC',
+    marginBottom: '50px',
+  },
+  backImage: {
+    height: '50px',
+    width: '50px',
+    backgroundColor: '#f4f4f4',
+    borderRadius: '50%',
+    border: '1px solid #ccc',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   title: {
-    fontSize: '3rem',
-    margin: '0 0 1rem',
+    fontSize: '2rem',
+    color: '#02482b',
+    marginLeft: '40px',
   },
   cardContent: {
     height: '50vh',
@@ -28,7 +48,7 @@ export const useStyles = makeStyles({
     margin: '30px 0',
   },
   field: {
-    width: '315px',
+    width: '300px',
   },
   contryDetails: {
     display: 'flex',
@@ -37,21 +57,33 @@ export const useStyles = makeStyles({
     alignItems: 'center',
   },
   fieldInfos: {
-    width: '200px',
+    width: '190px',
   },
   countryFlag: {
     border: '1px solid #CCC',
     borderRadius: '5px',
-    width: '50%',
+    width: '100%',
     height: '100%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: '50px',
   },
   flag: {
     width: '160px',
     height: '128px',
+  },
+  cardButtons: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    alignItems: 'flex-start',
+    height: '100%',
+    width: '100%',
+  },
+  button: {
+    backgroundColor: '#02482b',
+    color: '#fff',
+    width: '150px',
   },
 });

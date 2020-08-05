@@ -1,10 +1,20 @@
-import { Box, Toolbar, Grid, TextField } from '@material-ui/core';
-import React, { useState, useEffect } from 'react';
+import {
+  Box,
+  Toolbar,
+  Grid,
+  TextField,
+  InputAdornment,
+  Button,
+} from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
+import SaveIcon from '@material-ui/icons/Save';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
+import Back from '../../../assets/images/back.svg';
 import client from '../../../services';
 import { GET_COUNTRIES_BY_ID } from '../../../services/queries';
 import { useStyles } from './styles';
-import { useLocation } from 'react-router-dom';
 
 const CountryDetails = () => {
   const classes = useStyles();
@@ -12,6 +22,9 @@ const CountryDetails = () => {
 
   const [id, setId] = useState(location.pathname.substring(9));
   const [country, setCountry] = useState([]);
+  const [disabledField, setDisabledField] = useState(true);
+  const [disabledEdit, setDisabledEdit] = useState(false);
+  const [disabledSave, setDisabledSave] = useState(true);
 
   client
     .query({
@@ -26,22 +39,60 @@ const CountryDetails = () => {
     return num_parts.join('.');
   };
 
+  const enableEdit = () => {
+    setDisabledField(!disabledField);
+    setDisabledSave(!disabledSave);
+    setDisabledEdit(!disabledEdit);
+  };
+
+  const saveEdit = () => {
+    setDisabledField(!disabledField);
+    setDisabledSave(!disabledSave);
+    setDisabledEdit(!disabledEdit);
+  };
+
+  const changeField = (name, value) => {
+    const newCountryInfo = [...country];
+    newCountryInfo[name] = value;
+    setCountry(newCountryInfo);
+  };
+
   return (
     <div className={classes.root}>
       <Box>
         <Toolbar />
-        <h1 className={classes.title}>Detalhes do País</h1>
+        <div className={classes.cardHeader}>
+          <Link to="/">
+            <div className={classes.backImage}>
+              <img src={Back} alt="back" />
+            </div>
+          </Link>
+          <h1 className={classes.title}>Detalhes do País</h1>
+        </div>
         <div className={classes.cardContent}>
           {country.map((item) => (
-            <Grid key={item} container>
+            <Grid key={item} container spacing={4}>
+              <Grid item xs={3}>
+                <div className={classes.countryFlag}>
+                  <img
+                    src={item.flag.svgFile}
+                    alt="flag"
+                    className={classes.flag}
+                  />
+                </div>
+              </Grid>
               <Grid item xs={6}>
                 <div className={classes.countryInfos}>
                   <Box>
                     <div className={classes.contryCapital}>
                       <TextField
                         className={classes.field}
+                        disabled={disabledField}
                         label="Nome"
                         value={item.name}
+                        onChange={(event) => {
+                          changeField('name', event.target.value);
+                        }}
                         variant="outlined"
                         InputLabelProps={{
                           shrink: true,
@@ -49,6 +100,7 @@ const CountryDetails = () => {
                       />
                       <TextField
                         className={classes.field}
+                        disabled={disabledField}
                         label="Capital"
                         value={item.capital}
                         variant="outlined"
@@ -61,28 +113,38 @@ const CountryDetails = () => {
                   <Box>
                     <div className={classes.contryDetails}>
                       <TextField
-                        className={classes.fieldInfos}
                         label="Área"
+                        className={classes.fieldInfos}
                         variant="outlined"
-                        value={`${thousandsSeparators(item.area)}   ` + `Km²`}
-                        InputLabelProps={{
-                          shrink: true,
+                        disabled={disabledField}
+                        value={`${thousandsSeparators(item.area)}`}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="start">
+                              km²
+                            </InputAdornment>
+                          ),
                         }}
                       />
                       <TextField
                         className={classes.fieldInfos}
                         label="População"
                         variant="outlined"
-                        value={
-                          `${thousandsSeparators(item.population)}   ` +
-                          `milhões`
-                        }
-                        InputLabelProps={{
-                          shrink: true,
+                        value={`${thousandsSeparators(item.population)}`}
+                        disabled={disabledField}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="start">
+                              {item.population < 1000000
+                                ? 'mil / hab'
+                                : 'mi / hab'}
+                            </InputAdornment>
+                          ),
                         }}
                       />
                       <TextField
                         className={classes.fieldInfos}
+                        disabled={disabledField}
                         label="Top Level Domain"
                         variant="outlined"
                         value={item.topLevelDomains[0].name}
@@ -94,13 +156,26 @@ const CountryDetails = () => {
                   </Box>
                 </div>
               </Grid>
-              <Grid item xs={6}>
-                <div className={classes.countryFlag}>
-                  <img
-                    src={item.flag.svgFile}
-                    alt="flag"
-                    className={classes.flag}
-                  />
+              <Grid item xs={3}>
+                <div className={classes.cardButtons}>
+                  <Button
+                    onClick={enableEdit}
+                    variant="contained"
+                    color="primary"
+                    disabled={disabledEdit}
+                    className={classes.button}
+                    startIcon={<EditIcon />}>
+                    Editar
+                  </Button>
+                  <Button
+                    onClick={saveEdit}
+                    variant="contained"
+                    color="primary"
+                    disabled={disabledSave}
+                    className={classes.button}
+                    startIcon={<SaveIcon />}>
+                    Salvar
+                  </Button>
                 </div>
               </Grid>
             </Grid>

@@ -7,5 +7,6 @@ export const useStyles = makeStyles({
   title: {
     fontSize: '3rem',
     margin: '0 0 1rem',
+    color: '#02482b',
   },
 });
