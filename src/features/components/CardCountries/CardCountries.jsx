@@ -24,7 +24,10 @@ const CardCountries = () => {
       <Box>
         <Toolbar />
         <h1 className={classes.title}>Lista de Países</h1>
-        <Search setSearchCountry={setSearchCountry} />
+        <Search
+          data-testid="input-filter-id"
+          setSearchCountry={setSearchCountry}
+        />
         <Grid container spacing={4}>
           {countries
             .filter((country) => {
