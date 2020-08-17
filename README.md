@@ -6,9 +6,18 @@ Se você quiser dar uma olhada em todas as telas da aplicação, elas estão [aq
 
 ## Porquê?
 
-Este projeto faz parte do processo seletivo para desenvolvedor Front-End enviado pela Softplan.
-O desafio consiste em fazer um projeto que consome à [API Graph Countries](https://github.com/lennertVanSever/graphcountries) utlizando React.
-O layout ficou de livre escolha, o tanto quanto possível busquei construir uma interface amigável e funcional ao utilizador.
+Este projeto faz parte do meu portfólio pessoal, fiz apenas com o intuito de aprimorar minhas habilidades em React.js.
+
+Então, ficarei feliz se você pudesse me fornecer algum feedback sobre o projeto, código, estrutura ou qualquer coisa que você pode relatar que poderia me tornar um desenvolvedor melhor!
+
+A aplicação consiste em um projeto que consome à [API Graph Countries](https://github.com/lennertVanSever/graphcountries) utlizando React.
+
+O tanto quanto possível busquei construir uma interface amigável e funcional ao utilizador.
+
+Email: vini_bernal@hotmail.com
+
+Conecte-se comigo no [LinkedIn](https://www.linkedin.com/in/vin%C3%ADcius-bernal-19254027/)
+
 
 ## Algumas observações sobre esse App
 
@@ -29,7 +38,7 @@ O layout ficou de livre escolha, o tanto quanto possível busquei construir uma 
 
 - Country Page:
   - Na tela de detalhes do país, são renderizados alguns outros dados que não estão na home page, além da Bandeira, Nome e Capital, o utuilizado pode ver a área, população e top level domain.
-  - O usuário tem a opção de editar os dados. Ao clicar no botão `editar` os campos que estão somente como leitura, ficam ativos para edição. Mas essa funcionalidade não está implementada.
+  - O usuário tem a opção de editar os dados. Ao clicar no botão `editar` os campos que estão somente como leitura, ficam ativos para edição.
 
 ## Iniciando a Aplicação
 

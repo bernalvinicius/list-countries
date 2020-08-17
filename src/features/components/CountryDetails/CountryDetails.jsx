@@ -51,10 +51,15 @@ const CountryDetails = () => {
     setDisabledEdit(!disabledEdit);
   };
 
-  const changeField = (name, value) => {
+  const changeField = (field, id, value) => {
     const newCountryInfo = [...country];
-    newCountryInfo[name] = value;
-    setCountry(newCountryInfo);
+    newCountryInfo.forEach((c) => {
+      if (c._id === id) {
+        c[field] = value;
+        return;
+      }
+      setCountry([...newCountryInfo]);
+    });
   };
 
   return (
@@ -89,10 +94,10 @@ const CountryDetails = () => {
                         className={classes.field}
                         disabled={disabledField}
                         label="Nome"
-                        value={item.name}
-                        onChange={(event) => {
-                          changeField('name', event.target.value);
-                        }}
+                        defaultValue={item.name}
+                        onChange={(event) =>
+                          changeField('name', item._id, event.target.value)
+                        }
                         variant="outlined"
                         InputLabelProps={{
                           shrink: true,
@@ -102,7 +107,10 @@ const CountryDetails = () => {
                         className={classes.field}
                         disabled={disabledField}
                         label="Capital"
-                        value={item.capital}
+                        defaultValue={item.capital}
+                        onChange={(event) =>
+                          changeField('capital', item._id, event.target.value)
+                        }
                         variant="outlined"
                         InputLabelProps={{
                           shrink: true,
@@ -117,7 +125,10 @@ const CountryDetails = () => {
                         className={classes.fieldInfos}
                         variant="outlined"
                         disabled={disabledField}
-                        value={`${thousandsSeparators(item.area)}`}
+                        defaultValue={`${thousandsSeparators(item.area)}`}
+                        onChange={(event) =>
+                          changeField('area', item._id, event.target.value)
+                        }
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="start">
@@ -130,7 +141,14 @@ const CountryDetails = () => {
                         className={classes.fieldInfos}
                         label="População"
                         variant="outlined"
-                        value={`${thousandsSeparators(item.population)}`}
+                        defaultValue={`${thousandsSeparators(item.population)}`}
+                        onChange={(event) =>
+                          changeField(
+                            'population',
+                            item._id,
+                            event.target.value
+                          )
+                        }
                         disabled={disabledField}
                         InputProps={{
                           endAdornment: (
@@ -147,7 +165,10 @@ const CountryDetails = () => {
                         disabled={disabledField}
                         label="Top Level Domain"
                         variant="outlined"
-                        value={item.topLevelDomains[0].name}
+                        defaultValue={item.topLevelDomains[0].name}
+                        onChange={(event) =>
+                          changeField('name', item._id, event.target.value)
+                        }
                         InputLabelProps={{
                           shrink: true,
                         }}
