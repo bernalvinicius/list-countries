@@ -1,4 +1,4 @@
-# List Countries - Softplan
+# List Countries
 
 ![Preview-Screens](https://raw.githubusercontent.com/bernalvinicius/list-countries/master/src/assets/images/screenPage.png)
 
